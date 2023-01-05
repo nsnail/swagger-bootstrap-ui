@@ -23,11 +23,6 @@ const loadingTip = computed(() => {
 </script>
 
 <style>
-/* 字体优化 */
-* {
-  font-family: 'PingFang SC', 'Source Han Sans CN', 'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei',
-    '微软雅黑', Arial, sans-serif;
-}
 
 /* 滚动条优化 */
 body {

@@ -1,11 +1,6 @@
 <template>
   <a-layout-content class="knife4j-body-content">
     <div class="markdown-row">
-      <div class="globalparameters">
-        <div class="gptips">
-          {{ $t('offline.des') }}
-        </div>
-      </div>
       <a-row class="knife4j-download-button">
         <a-button @click="triggerDownloadMarkdown">
           <FileMarkdownOutlined /><span>{{ $t('offline.download.markdown') }}</span>
@@ -44,7 +39,6 @@ import markdownText from "@/components/officeDocument/markdownTransform";
 import wordText from "@/components/officeDocument/wordTransform";
 import wordTextUS from "@/components/officeDocument/wordTransformUS";
 import markdownTextUS from "@/components/officeDocument/markdownTransformUS";
-import OnlineDocument from "@/views/api/OnlineDocument.vue";
 import DownloadHtml from "./DownloadHtml.vue";
 import KUtils from "@/core/utils";
 import Constants from "@/store/constants";
@@ -63,7 +57,6 @@ export default {
     }
   },
   components: {
-    OnlineDocument,
     DownloadHtml,
     FileMarkdownOutlined,
     FileTextOutlined,

@@ -156,11 +156,9 @@ export default {
         // console(item, tabProps);
       },
       clearLocalCache() {
-        try {
-          // TODO
-          // this.$localStore.clear();
-        } catch (error) {}
+        localStore.clear();
         message.info("清除本地缓存成功");
+        window.location.reload()
       },
     };
   },

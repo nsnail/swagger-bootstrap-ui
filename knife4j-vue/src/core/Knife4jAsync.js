@@ -174,13 +174,13 @@ function SwaggerBootstrapUi(options) {
     enableResponseCode: true, // since 4.0.0 是否显示响应状态码栏
 
     enableSwaggerModels: true,// 是否显示界面中SwaggerModel功能
-    swaggerModelName: 'Swagger Models',// 重命名界面Swagger Model的显示名称
+    swaggerModelName: '数据模型',// 重命名界面Swagger Model的显示名称
     enableReloadCacheParameter: false,//  是否在每个Debug调试栏后显示刷新变量按钮,默认不显示
     enableAfterScript: true,// 调试Tab是否显示AfterScript功能,默认开启
     enableDocumentManage: true,// 是否显示界面中'文档管理'功能
     enableVersion: false,// 是否开启界面中对某接口的版本控制,如果开启，后端变化后Ui界面会存在小蓝点
     showApiUrl: false, // 接口api地址不显示
-    showTagStatus: false, // 分组tag显示description属性,针对@Api注解没有tags属性值的情况
+    showTagStatus: true, // 分组tag显示description属性,针对@Api注解没有tags属性值的情况
     enableSwaggerBootstrapUi: false, // 是否开启swaggerBootstrapUi增强
     treeExplain: true,
     enableDynamicParameter: false, // 开启动态参数
@@ -2306,8 +2306,8 @@ SwaggerBootstrapUi.prototype.analysisDefinitionRefTableModel = function (instanc
                     refp.name = pkey;
                     refp.type = def.type;
                     refp.example = def.example;
-                    //description = '可用值:' + def['enum'].join(',');
-                    description = def.description + KUtils.enumAvalibleLabel(that.i18nInstance, def['enum']);
+                    description = def.description;
+                    // description = spropObj.description + KUtils.enumAvalibleLabel(that.i18nInstance, def['enum']);
                     refp.description = KUtils.replaceMultipLineStr(description);
                     // models添加所有属性
                     originalTreeTableModel.params.push(refp);
@@ -3404,6 +3404,16 @@ SwaggerBootstrapUi.prototype.createDetailMenu = function (addFlag) {
         i18n: 'selfSettings',
         component: 'Settings',
         path: 'Settings'
+      },
+      {
+        groupName: groupName,
+        groupId: groupId,
+        key: 'api' + md5(groupName),
+        /* name: '个性化设置', */
+        name: this.getI18n().menu.genApi,
+        i18n: 'genApi',
+        component: 'GenApi',
+        path: 'api'
       }
       ]
     });
@@ -3497,7 +3507,7 @@ SwaggerBootstrapUi.prototype.createDetailMenu = function (addFlag) {
       });
     } else {
       if (that.settings.showTagStatus) {
-        _lititle = tag.name + '(' + tag.description + ')';
+        _lititle =  tag.description ;
       } else {
         _lititle = tag.name;
       }

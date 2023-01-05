@@ -126,7 +126,7 @@
                                @change="formNameChange" />
                     </template>
                     <template v-else-if="column.dataIndex == 'type'">
-                      <a-select :defaultValue="record.name + '-' + record.id" @change="formTypeChange" style="width: 100%;">
+                      <a-select :defaultValue="'text-' + record.id" @change="formTypeChange" style="width: 100%;">
                         <a-select-option :value="'text-' + record.id"><span>{{$t('debug.form.itemText')}}</span>
                         </a-select-option>
                         <a-select-option :value="'file-' + record.id"><span>{{ $t('debug.form.itemFile') }}</span>
@@ -134,7 +134,7 @@
                       </a-select>
                     </template>
                     <template v-else-if="column.dataIndex == 'content'">
-                      <div v-if="record.type == 'text'">
+                      <div v-if="!record.type || record.type == 'text'">
                         <!--判断枚举类型-->
                         <a-row v-if="record.enums != null">
                           <!--不为空-->
@@ -207,49 +207,11 @@
                 </a-table>
               </a-row>
               <a-row v-if="rawFlag">
-                <a-row v-if="rawFormFlag">
-                  <!--如果存在raw类型的参数则显示该表格-->
-                  <a-table v-if="rawFormTableFlag" bordered size="small" :rowSelection="rowRawFormSelection"
-                    :columns="urlFormColumn" :pagination="pagination" :dataSource="rawFormData" rowKey="id">
-                    <!--参数名称-->
-                    <template #urlFormName="{text, record}">
-                      <a-input :placeholder="record.description" :data-key="record.id" :defaultValue="text"
-                        @change="rawFormNameChange" />
-                    </template>
-
-                    <!--参数名称-->
-                    <template #urlFormValue="{text, record}">
-                      <!--判断枚举类型-->
-                      <a-row v-if="record.enums != null">
-                        <!--不为空-->
-                        <a-select :mode="record.enumsMode" :defaultValue="text" :data-key="record.id"
-                          :options="record.enums" style="width: 100%" @change="rawFormContentEnumChange">
-                        </a-select>
-                      </a-row>
-                      <a-row v-else>
-                        <a-input :placeholder="record.description"
-                          :class="'knife4j-debug-param-require' + record.require" :data-key="record.id"
-                          :defaultValue="text" @change="rawFormContentChange" />
-                      </a-row>
-                    </template>
-                    <template #operation="{text, record}">
-                      <a-row>
-                        <a-button type="link" v-if="!record.new"
-                                  @click="rawFormDelete(record)">{{ $t('debug.tableHeader.holderDel') }}</a-button>
-                      </a-row>
-                    </template>
-
-                  </a-table>
-                </a-row>
                 <editor-debug-show style="margin-top:5px;" v-model:value="rawText" :mode="rawMode">
                 </editor-debug-show>
               </a-row>
             </a-tab-pane>
             <a-tab-pane v-if="enableAfterScript" key="3" tab="AfterScript">
-              <a-row style="height:25px;line-height:25px;">
-                关于AfterScript更详细的使用方法及介绍,请<a href="https://gitee.com/xiaoym/knife4j/wikis/AfterScript"
-                  target="_blank">参考文档</a>
-              </a-row>
               <a-row>
                 <editor-script style="margin-top:5px;" v-model:value="rawScript"></editor-script>
               </a-row>
@@ -338,7 +300,7 @@ export default {
       debugUrlStyle: "width: 80%",
       enableRequestCache: false,
       // 是否动态参数
-      enableDynamicParameter: false,
+      enableDynamicParameter: true,
       enableHost: false,
       enableHostText: '',
       authorizeQueryParameters: [],
@@ -751,7 +713,7 @@ export default {
             id: KUtils.randomMd5(),
             name: param.name,
             content: param.value,
-            require: false,
+            require: true,
             description: "",
             enums: null, // 枚举下拉框
             // 枚举是否支持多选('default' | 'multiple' )
@@ -787,7 +749,7 @@ export default {
             };
             if (security.in == 'header') {
               // console.log("addHeader.", security)
-              // this.headerData.push(newHeader);
+              this.headerData.push(newHeader);
               // 判断该接口是否security-Authorize
               if (this.api.securityFlag) {
                 if (this.api.securityKeys.includes(security.key)) {
@@ -1100,7 +1062,7 @@ export default {
           id: KUtils.randomMd5(),
           name: "",
           content: "",
-          require: false,
+          require: true,
           description: "",
           enums: null, // 枚举下拉框
           // 枚举是否支持多选('default' | 'multiple' )
@@ -1241,7 +1203,7 @@ export default {
           id: KUtils.randomMd5(),
           name: "",
           type: "text",
-          require: false,
+          require: true,
           // 文件表单域的target
           target: null,
           multipart: false,
@@ -1265,7 +1227,7 @@ export default {
             id: KUtils.randomMd5(),
             name: global.name,
             type: "text",
-            require: false,
+            require: true,
             // 文件表单域的target
             target: null,
             multipart: false,
@@ -1288,7 +1250,7 @@ export default {
             id: KUtils.randomMd5(),
             name: global.name,
             type: "text",
-            require: false,
+            require: true,
             // 文件表单域的target
             target: null,
             multipart: false,
@@ -1413,7 +1375,7 @@ export default {
             id: KUtils.randomMd5(),
             name: global.name,
             type: "text",
-            require: false,
+            require: true,
             // 文件表单域的target
             target: null,
             content: global.value,
@@ -1551,7 +1513,7 @@ export default {
           name: "",
           type: "text",
           // 是否必须
-          require: false,
+          require: true,
           // 文件表单域的target
           target: null,
           content: "",
@@ -1573,7 +1535,7 @@ export default {
           name: "",
           type: "text",
           // 是否必须
-          require: false,
+          require: true,
           // 文件表单域的target
           target: null,
           content: "",

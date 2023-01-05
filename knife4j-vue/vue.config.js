@@ -10,10 +10,10 @@ module.exports = {
   ],
   publicPath: ".",
   assetsDir: "webjars",
-  outputDir: "dist",
+  outputDir: "../../IGeekFan.AspNetCore.Knife4jUI/src/IGeekFan.AspNetCore.Knife4jUI",
   lintOnSave: false,
   productionSourceMap: false,
-  indexPath: "doc.html",
+  indexPath: "index.html",
   css: {
     loaderOptions: {
       less: {

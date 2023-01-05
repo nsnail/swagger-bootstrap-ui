@@ -10,7 +10,7 @@
       </a-button>
     </a-row>
     <div style="margin-top:10px;" :id="'knife4jDocumentOpenApiShowEditor'">
-      <editor-show v-model:value="openApiRaw" theme="eclipse"></editor-show>
+      <editor-show v-model:value="openApiRaw" theme="xcode"></editor-show>
     </div>
   </div>
 </template>
@@ -28,13 +28,13 @@ import ace from "ace-builds";
 import modeJson from "ace-builds/src-noconflict/mode-json?url";
 import modeJson5 from "ace-builds/src-noconflict/mode-json5.js?url";
 import modeXml from "ace-builds/src-noconflict/mode-xml?url";
-import themeEclipse from "ace-builds/src-noconflict/theme-eclipse?url";
+import themeXcode from "ace-builds/src-noconflict/theme-xcode?url";
 import extLanguageTools from "ace-builds/src-noconflict/ext-language_tools?url";
 
 ace.config.setModuleUrl('ace/mode/json', modeJson)
 ace.config.setModuleUrl('ace/mode/json', modeJson5)
 ace.config.setModuleUrl('ace/mode/xml', modeXml)
-ace.config.setModuleUrl('ace/theme/eclipse', themeEclipse)
+ace.config.setModuleUrl('ace/theme/xcode', themeXcode)
 ace.config.setModuleUrl('ace/ext-language/tools', extLanguageTools)
 
 export default {

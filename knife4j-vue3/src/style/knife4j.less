@@ -7,7 +7,7 @@
 @headerCollapsedWidth: calc(100vw - 80px);
 @contentTabHeight: calc(100vh - 152px);
 /* @GlobalBackgroundColor: #252728; */
-@GlobalBackgroundColor: #001529;
+@GlobalBackgroundColor: #eeeeee;
 @GlobalSubMenuBackgroundColor: #000c17;
 @menu-collapsed-width: 70px;
 
@@ -52,25 +52,8 @@
 
 .knife4j-menu::-webkit-scrollbar {
   /*滚动条整体样式*/
-  width: 6px;
-  /*高宽分别对应横竖滚动条的尺寸*/
-  height: 0.5px;
+  width: 5px;
 }
-
-.knife4j-menu::-webkit-scrollbar-thumb {
-  /*滚动条里面小方块*/
-  border-radius: 10px;
-  -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
-  background: #469aed;
-}
-
-.knife4j-menu::-webkit-scrollbar-track {
-  /*滚动条里面轨道*/
-  -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
-  border-radius: 10px;
-  background: #001529;
-}
-
 
 .knife4j-menu-all {
   height: @contentAllHeight;
@@ -102,23 +85,7 @@
 
 .knife4j-menu-all::-webkit-scrollbar {
   /*滚动条整体样式*/
-  width: 6px;
-  /*高宽分别对应横竖滚动条的尺寸*/
-  height: 0.5px;
-}
-
-.knife4j-menu-all::-webkit-scrollbar-thumb {
-  /*滚动条里面小方块*/
-  border-radius: 10px;
-  -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
-  background: #469aed;
-}
-
-.knife4j-menu-all::-webkit-scrollbar-track {
-  /*滚动条里面轨道*/
-  -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
-  border-radius: 10px;
-  background: #001529;
+  width: 5px;
 }
 
 
@@ -159,7 +126,7 @@
   line-height: 16px;
   white-space: nowrap;
   text-align: center;
-  background: #4c96e8;
+  background: #00ab6d;
   border-radius: 24px;
   -webkit-box-shadow: 0 0 0 1px #fff;
   box-shadow: 0 0 0 1px #fff;
@@ -212,7 +179,7 @@
   height: 64px;
   position: relative;
   line-height: 64px;
-  padding-left: (@menu-collapsed-width - 48px) / 2;
+  padding-left: calc((@menu-collapsed-width - 48px) / 2);
   transition: all 0.3s;
   background: @GlobalBackgroundColor;
   overflow: hidden;
@@ -307,25 +274,8 @@
 */
 .knife4j-body-content::-webkit-scrollbar {
   /*滚动条整体样式*/
-  width: 8px;
-  /*高宽分别对应横竖滚动条的尺寸*/
-  height: 0.5px;
+  width: 5px;
 }
-
-.knife4j-body-content::-webkit-scrollbar-thumb {
-  /*滚动条里面小方块*/
-  border-radius: 10px;
-  -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
-  background: #469aed;
-}
-
-.knife4j-body-content::-webkit-scrollbar-track {
-  /*滚动条里面轨道*/
-  -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
-  border-radius: 10px;
-  background: #fff;
-}
-
 
 .knife4j-router-view {
   min-height: 480px;
@@ -752,4 +702,42 @@
 .knife4j-debug-editor-field-description {
   position: absolute;
   color: #8c8c8c;
+}
+.knife4j-tab.ant-tabs {
+  margin-top: 10px;
+}
+
+html {
+  .ant-layout, .ant-layout-footer {
+    background: #ffffff;
+  }
+
+  .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected, .ant-menu-item:active,
+  .ant-menu-submenu-title:active {
+    background: rgba(73, 204, 144, 0.1);
+  }
+
+  .ant-menu-light .ant-menu-item:hover, .ant-menu-light .ant-menu-item-active, .ant-menu-light .ant-menu:not(.ant-menu-inline) .ant-menu-submenu-open, .ant-menu-light .ant-menu-submenu-active, .ant-menu-light .ant-menu-submenu-title:hover, .ant-menu-item a:hover, .ant-menu-item-selected a, .ant-menu-item-selected a:hover, .ant-menu-submenu:hover > .ant-menu-submenu-title > .ant-menu-submenu-expand-icon, .ant-menu-submenu:hover > .ant-menu-submenu-title > .ant-menu-submenu-arrow, .ant-menu-submenu-selected, .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn, .ant-tabs-tab-btn:focus, .ant-tabs-tab-remove:focus, .ant-tabs-tab-btn:active, .ant-tabs-tab-remove:active, .ant-tabs-tab:hover, .ant-btn:hover, .ant-btn:focus, .ant-spin, a, a:hover, .ant-btn-link {
+    color: #00ab6d;
+  }
+
+  ::selection, .ant-badge-status-processing, .ant-btn-primary, .ant-btn-primary:focus, .ant-tabs-ink-bar, .ant-checkbox-checked .ant-checkbox-inner, .ant-spin-dot-item, .ant-radio-inner::after, .ant-checkbox-indeterminate .ant-checkbox-inner::after {
+    background: #00ab6d;
+  }
+
+  .ant-btn-primary:hover, .ant-btn-primary:focus, .ant-select-item-option-selected:not(.ant-select-item-option-disabled) {
+    color: #00ab6d;
+    background: rgba(73, 204, 144, 0.1);
+  }
+  .ant-btn-primary, .ant-badge-status-processing::after, .ant-menu-vertical .ant-menu-item::after, .ant-menu-vertical-left .ant-menu-item::after, .ant-menu-vertical-right .ant-menu-item::after, .ant-menu-inline .ant-menu-item::after, .ant-btn:hover, .ant-btn:focus, .ant-checkbox-wrapper:hover .ant-checkbox-inner, .ant-checkbox:hover .ant-checkbox-inner, .ant-checkbox-input:focus + .ant-checkbox-inner, .ant-checkbox-checked .ant-checkbox-inner, .ant-input:hover, .ant-input:focus, .ant-input-focused, .ant-select:not(.ant-select-disabled):hover .ant-select-selector, .ant-select-focused:not(.ant-select-disabled).ant-select:not(.ant-select-customize-input) .ant-select-selector, .ant-radio-checked .ant-radio-inner, .ant-radio-wrapper:hover .ant-radio, .ant-radio:hover .ant-radio-inner, .ant-radio-input:focus + .ant-radio-inner {
+    border-color: #00ab6d;
+  }
+
+  .ant-input:focus, .ant-input-focused, .ant-select-focused:not(.ant-select-disabled).ant-select:not(.ant-select-customize-input) .ant-select-selector, .ant-radio-input:focus + .ant-radio-inner {
+    box-shadow: 0 0 0 2px rgba(73, 204, 144, 0.2);
+  }
+
+  .ant-layout-sider {
+    background: #eeeeee;
+  }
 }

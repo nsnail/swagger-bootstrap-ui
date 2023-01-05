@@ -65,7 +65,6 @@
       <template #bodyCell="{ column, record }">
         <template v-if="column.dataIndex === 'description'">
           <span v-html="record.description"></span>
-          <span v-if="record.example">,示例值({{ record.example }})</span>
         </template>
         <template v-else-if="column.dataIndex === 'in'">
           <span :class="'knife4j-request-' + record.in">{{ record.in }}</span>
@@ -84,12 +83,14 @@
       <div class="api-title" v-html="$t('doc.response')"></div>
       <a-table :defaultExpandAllRows="expanRows" :columns="responseStatuscolumns" :dataSource="api.responseCodes"
         rowKey="code" size="small" :pagination="page">
-        <template slot="descriptionTemplate" slot-scope="text">
-          <div v-html="text"></div>
+        <template #bodyCell="{column,record}">
+          <template v-if="column.dataIndex === 'code'">
+            <div v-html="record.code"></div>
         </template>
-        <template slot="schemaTemplate" slot-scope="text,record">
-          <span v-if="text != null" v-html="text"></span>
-          <span v-else-if="record.schemaTitle != null" v-html="record.schemaTitle"></span>
+          <template v-if="column.dataIndex === 'description'">
+            <span v-if="record.description != null" v-html="record.description"></span>
+            <span v-else-if="record.schemaTitle != null" v-html="record.schemaTitle"></span>
+          </template>
         </template>
       </a-table>
     </div>
@@ -109,8 +110,8 @@
           <div class="api-title" v-html="$t('doc.responseParams')"></div>
           <a-table :defaultExpandAllRows="expanRows" :columns="responseParametersColumns" :dataSource="resp.data"
             rowKey="id" size="small" :pagination="page">
-            <template slot="descriptionTemplate" slot-scope="text">
-              <span v-html="text"></span>
+            <template #bodyCell="{column,record}">
+              <span v-html="record"></span>
             </template>
           </a-table>
             <!-- 响应示例 -->
@@ -139,8 +140,13 @@
       <div class="api-title" v-html="$t('doc.responseParams')"></div>
        <a-table :defaultExpandAllRows="expanRows" :columns="responseParametersColumns" :dataSource="multipData.data"
          rowKey="id" size="small" :pagination="page">
-         <template slot="descriptionTemplate" slot-scope="text">
-           <span v-html="text"></span>
+        <template #bodyCell="{column,record}">
+          <template v-if="column.dataIndex==='name'">
+            <span v-html="record.name"></span>
+          </template>
+          <template v-if="column.dataIndex==='description'">
+            <span v-html="record.description"></span>
+          </template>
          </template>
        </a-table>
        <div class="api-title" v-html="$t('doc.responseExample')">

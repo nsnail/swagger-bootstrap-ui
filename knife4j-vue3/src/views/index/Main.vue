@@ -82,7 +82,7 @@
                   {{ param.method }}
                 </a-col>
                 <a-col :span="2">
-                  <a-tag color="#108ee9">{{ param.count }}</a-tag>
+                  <a-tag color="#00ab6d">{{ param.count }}</a-tag>
                 </a-col>
                 <a-divider class="divider-count" />
               </a-row>

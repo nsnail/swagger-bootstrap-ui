@@ -3,7 +3,7 @@
     <a-layout class="ant-layout-has-sider">
       <a-layout-sider :trigger="null" collapsible :collapsed="state.collapsed" breakpoint="lg"
                       @collapse="handleMenuCollapse"
-                      :width="state.menuWidth" class="sider" style="background: #1e282c;">
+                      :width="state.menuWidth">
         <div class="knife4j-logo-data" key="logo" v-if="!state.collapsed && settings.enableGroup">
           <a to="/" style="float:left;">
             <a-select show-search :value="defaultServiceOption" style="width: 300px" :options="serviceOptions"
@@ -11,13 +11,8 @@
             </a-select>
           </a>
         </div>
-        <div class="knife4j-logo" key="logo" v-if="state.collapsed && settings.enableGroup">
-          <a to="/" style="float:left;" v-if="state.collapsed">
-            <img :src="state.logo" alt="logo"/>
-          </a>
-        </div>
         <div :class="settings.enableGroup ? 'knife4j-menu' : 'knife4j-menu-all'">
-          <a-menu key="Menu" theme="dark" mode="inline" :collapsed="state.collapsed"
+          <a-menu key="Menu" mode="inline" :collapsed="state.collapsed"
                   @openChange="handleOpenChange"
                   @select="selected" :openKeys="state.openKeys" :selectedKeys="state.selectedKeys"
                   style="padding: 2px 0; width: 100%">
@@ -214,7 +209,7 @@ function initSpringDocOpenApi() {
         locale.value = tmpI18n;
         state.enableVersion = settings.enableVersion;
         initSwagger({
-          springdoc: true,
+          springdoc: false,
           baseSpringFox: true,
           localStore: localStore,
           settings: settings,
@@ -237,7 +232,7 @@ function initSpringDocOpenApi() {
           locale.value = tmpI18n;
           state.enableVersion = settings.enableVersion;
           initSwagger({
-            springdoc: true,
+            springdoc: false,
             baseSpringFox: true,
             localStore: localStore,
             settings: settings,

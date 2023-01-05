@@ -1,6 +1,6 @@
 <template>
   <div>
-    <editor :value="value" @init="editorInit" :lang="lang" theme="eclipse" width="100%" :style="{height: editorHeight + 'px'}"
+    <editor :value="value" @init="editorInit" :lang="lang" theme="xcode" width="100%" :style="{height: editorHeight + 'px'}"
       @input="change"></editor>
   </div>
 </template>
@@ -10,12 +10,12 @@ import { VAceEditor } from 'vue3-ace-editor'
 import ace from "ace-builds";
 import modeJson from "ace-builds/src-noconflict/mode-json?url";
 import modeXml from "ace-builds/src-noconflict/mode-xml?url";
-import themeEclipse from "ace-builds/src-noconflict/theme-eclipse?url";
+import themeXcode from "ace-builds/src-noconflict/theme-xcode?url";
 import extLanguageTools from "ace-builds/src-noconflict/ext-language_tools?url";
 
 ace.config.setModuleUrl('ace/mode/json', modeJson)
 ace.config.setModuleUrl('ace/mode/xml', modeXml)
-ace.config.setModuleUrl('ace/theme/eclipse', themeEclipse)
+ace.config.setModuleUrl('ace/theme/xcode', themeXcode)
 ace.config.setModuleUrl('ace/ext-language/tools', extLanguageTools)
 
 export default {

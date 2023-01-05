@@ -16,14 +16,16 @@
         </a-tab-pane>
         <a-tab-pane v-if="settings.enableOpenApi" key="openapi">
           <template #tab>
-            <file-text-outlined/><span>Open</span>
+            <api-outlined/><span>Open</span>
           </template>
           <OpenApi :api="api" :swaggerInstance="swaggerInstance" />
         </a-tab-pane>
-        <!-- TODO 暂时不知道vite怎么支持 -->
-<!--        <a-tab-pane v-if="settings.enableOpenApi" key="script" tab="Script">-->
-<!--          <ScriptView :api="api" :swaggerInstance="swaggerInstance" />-->
-<!--        </a-tab-pane>-->
+        <a-tab-pane v-if="settings.enableOpenApi" key="script">
+          <template #tab>
+            <code-outlined /><span>Script</span>
+          </template>
+          <ScriptView :api="api" :swaggerInstance="swaggerInstance" />
+        </a-tab-pane>
 
       </a-tabs>
     </a-row>
@@ -40,7 +42,7 @@ import KUtils from "@/core/utils";
 import { useGlobalsStore } from '@/store/modules/global.js'
 import { computed, defineAsyncComponent } from 'vue'
 import localStore from '@/store/local.js'
-import { FileTextOutlined } from '@ant-design/icons-vue'
+import { FileTextOutlined,CodeOutlined,ApiOutlined } from '@ant-design/icons-vue'
 
 export default {
   name: "APIDoc",
@@ -48,8 +50,8 @@ export default {
     "Document": defineAsyncComponent(() => import("./Document.vue")),
     "Debug": defineAsyncComponent(() => import("./Debug.vue")),
     "OpenApi": defineAsyncComponent(() => import("./OpenApi.vue")),
-    // "ScriptView": defineAsyncComponent(() => import("./ScriptView.vue")),
-    FileTextOutlined,
+    "ScriptView": defineAsyncComponent(() => import("./ScriptView.vue")),
+    FileTextOutlined,CodeOutlined,ApiOutlined
   },
   props: {
     data: {

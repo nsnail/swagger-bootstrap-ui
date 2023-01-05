@@ -1,9 +1,6 @@
 <template>
   <a-layout-content class="knife4j-body-content">
     <div class="globalparameters">
-      <div class="gptips" v-html="$t('global.note')"></div>
-    </div>
-    <div class="globalparameters">
       <a-button type="primary" @click="addGlobalParameters">
         <plus-outlined type="plus" />
         <span>{{ $t('global.add') }}</span>
@@ -12,19 +9,22 @@
     <div class="globalparameters">
       <a-table :columns="columns" rowKey="pkid" size="small" :dataSource="globalParameters" :pagination="pagination"
                bordered>
-        <a-row slot="operation" slot-scope="text,record">
-          <a-button icon="delete" type="danger" @click="deleteParam(record)" style="margin-left:10px;"
-          >{{ $t('global.delete') }}</a-button>
-        </a-row>
-        <template slot="paramContentLabel" slot-scope="text,record">
-          <a-textarea @change="headerContentChange" :data-key="record.pkid" :defaultValue="text"
-                      :autoSize="{ minRows: 2, maxRows: 6 }" allowClear />
-        </template>
-        <template slot="paramTypeLable" slot-scope="text,record">
-          <a-select :defaultValue="text" @change="globalParamTypeChange">
-            <a-select-option :data-name="record.name" :data-key="record.pkid" value="header">header</a-select-option>
-            <a-select-option :data-name="record.name" :data-key="record.pkid" value="query">query</a-select-option>
-          </a-select>
+        <template #bodyCell="{column,record}">
+          <a-row v-if="column.dataIndex ==='operation'">
+            <a-button icon="delete" type="danger" @click="deleteParam(record)" style="margin-left:10px;"
+            >{{ $t('global.delete') }}
+            </a-button>
+          </a-row>
+          <a-row v-else-if="column.dataIndex==='value'">
+            <a-textarea @change="headerContentChange" :data-key="record.pkid" :defaultValue="record.value"
+                        :autoSize="{ minRows: 2, maxRows: 6 }" allowClear/>
+          </a-row>
+          <a-row v-else-if="column.dataIndex ==='in'">
+            <a-select :defaultValue="record.in" @change="globalParamTypeChange">
+              <a-select-option :data-name="record.in" :data-key="record.pkid" value="header">header</a-select-option>
+              <a-select-option :data-name="record.in" :data-key="record.pkid" value="query">query</a-select-option>
+            </a-select>
+          </a-row>
         </template>
       </a-table>
     </div>
@@ -169,8 +169,8 @@ export default {
     globalParamTypeChange(globalParamValue, option) {
       const tmpArrs = this.globalParameters;
       // 旧pkid
-      const pkid = option.data.attrs["data-key"]
-      const name = option.data.attrs["data-name"]
+      const pkid = option["data-key"]
+      const name = option["data-name"]
       const newpkid = name + globalParamValue
       // 判断是否已经存在该参数
       const fl = this.globalParameters.filter(

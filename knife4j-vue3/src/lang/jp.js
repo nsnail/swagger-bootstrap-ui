@@ -25,13 +25,7 @@ const langOptions = {
         title: '説明',
         width: '35%',
         dataIndex: 'description',
-        scopedSlots: { customRender: 'descriptionValueTemplate' }
       },
-      {
-        title: 'schema',
-        dataIndex: 'schemaValue',
-        width: '15%'
-      }
     ],
     //文档说明-请求参数
     documentRequestColumns: [
@@ -44,28 +38,19 @@ const langOptions = {
         title: 'パラメータの説明',
         dataIndex: 'description',
         width: '25%',
-        scopedSlots: { customRender: 'descriptionValueTemplate' }
       },
       {
-        title: 'リクエストタイプ',
-        dataIndex: 'in',
-        scopedSlots: { customRender: 'typeTemplate' }
+        title: 'サンプル値',
+        dataIndex: 'example',
       },
       {
         title: '必須かどうか',
         dataIndex: 'require',
-        scopedSlots: { customRender: 'requireTemplate' }
       },
       {
         title: 'データタイプ',
         dataIndex: 'type',
-        scopedSlots: { customRender: 'datatypeTemplate' }
       },
-      {
-        title: 'schema',
-        dataIndex: 'schemaValue',
-        width: '15%'
-      }
     ],
     //文档说明-响应状态
     documentResponseStatusColumns: [
@@ -78,12 +63,10 @@ const langOptions = {
         title: '説明',
         dataIndex: 'description',
         width: '55%',
-        scopedSlots: { customRender: 'descriptionTemplate' }
       },
       {
         title: 'schema',
         dataIndex: 'schema',
-        scopedSlots: { customRender: 'schemaTemplate' }
       }
     ],
     //文档说明-响应Header
@@ -113,18 +96,16 @@ const langOptions = {
       {
         title: 'パラメータの説明',
         dataIndex: 'description',
-        scopedSlots: { customRender: 'descriptionTemplate' },
         width: '40%'
+      },
+      {
+        title: 'サンプル値',
+        dataIndex: 'example',
       },
       {
         title: 'タイプ',
         dataIndex: 'type'
       },
-      {
-        title: 'schema',
-        dataIndex: 'schemaValue',
-        width: '15%'
-      }
     ],
     //调试-请求头参数
     debugRequestHeaderColumns: [
@@ -132,24 +113,15 @@ const langOptions = {
         title: 'リクエストヘッダ',
         dataIndex: 'name',
         width: '20%',
-        scopedSlots: {
-          customRender: 'headerName'
-        }
       },
       {
         title: 'コンテンツ',
         dataIndex: 'content',
-        scopedSlots: {
-          customRender: 'headerValue'
-        }
       },
       {
         title: 'オプション',
         dataIndex: 'operation',
         width: '10%',
-        scopedSlots: {
-          customRender: 'operation'
-        }
       }
     ],
     //调试-FormData类型请求头
@@ -158,32 +130,20 @@ const langOptions = {
         title: 'パラメータ名',
         dataIndex: 'name',
         width: '20%',
-        scopedSlots: {
-          customRender: 'formName'
-        }
       },
       {
         title: 'タイプ',
         dataIndex: 'type',
         width: '12%',
-        scopedSlots: {
-          customRender: 'formType'
-        }
       },
       {
         title: 'パラメータ値',
         dataIndex: 'content',
-        scopedSlots: {
-          customRender: 'formValue'
-        }
       },
       {
         title: 'オプション',
         dataIndex: 'operation',
         width: '10%',
-        scopedSlots: {
-          customRender: 'operation'
-        }
       }
     ],
     //调试-url-form类型请求参数头
@@ -192,24 +152,15 @@ const langOptions = {
         title: 'パラメータ名',
         dataIndex: 'name',
         width: '20%',
-        scopedSlots: {
-          customRender: 'urlFormName'
-        }
       },
       {
         title: 'パラメータ値',
         dataIndex: 'content',
-        scopedSlots: {
-          customRender: 'urlFormValue'
-        }
       },
       {
         title: 'オプション',
         dataIndex: 'operation',
         width: '10%',
-        scopedSlots: {
-          customRender: 'operation'
-        }
       }
     ],
     //调试-响应Header
@@ -245,9 +196,6 @@ const langOptions = {
       {
         title: 'パラメータ値',
         dataIndex: 'value',
-        scopedSlots: {
-          customRender: 'paramIpt'
-        }
       }
     ]
   },
@@ -354,7 +302,7 @@ const langOptions = {
       title: 'パラメータ名',
       dataIndex: 'name',
       width: '15%',
-      scopedSlots: {
+      slots: {
         customRender: 'name'
       }
     },
@@ -363,7 +311,7 @@ const langOptions = {
       className: 'column-money',
       dataIndex: 'value',
       width: '65%',
-      scopedSlots: {
+      slots: {
         customRender: 'paramContentLabel'
       }
     },
@@ -371,14 +319,14 @@ const langOptions = {
       title: 'パラメータのタイプ',
       dataIndex: 'in',
       width: '10%',
-      scopedSlots: {
+      slots: {
         customRender: 'paramTypeLable'
       }
     },
     {
       title: 'オプション',
       dataIndex: 'operation',
-      scopedSlots: {
+      slots: {
         customRender: 'operation'
       }
     }

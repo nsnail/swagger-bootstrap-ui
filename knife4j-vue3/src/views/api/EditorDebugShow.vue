@@ -2,10 +2,10 @@
   <div>
     <div v-if="debugResponse">
       <editor class="knife4j-debug-ace-editor" @input="change" :options="debugOptions" v-model:value="valueText" @init="editorInit"
-        :lang="mode" theme="eclipse" width="100%" :style="{height: editorHeight + 'px'}"></editor>
+        :lang="mode" theme="xcode" width="100%" :style="{height: editorHeight + 'px'}"></editor>
     </div>
     <div v-else>
-      <editor v-model:value="valueText" @init="editorInit" @input="change" :lang="mode" theme="eclipse" width="100%"
+      <editor v-model:value="valueText" @init="editorInit" @input="change" :lang="mode" theme="xcode" width="100%"
         :style="{height: editorHeight + 'px'}"></editor>
     </div>
 
@@ -19,7 +19,7 @@ import "ace-builds/src-noconflict/mode-json.js";
 import "ace-builds/src-noconflict/mode-xml.js";
 import "ace-builds/src-noconflict/mode-text.js";
 import "ace-builds/src-noconflict/mode-javascript.js";
-import "ace-builds/src-noconflict/theme-eclipse.js";
+import "ace-builds/src-noconflict/theme-xcode.js";
 import "ace-builds/src-noconflict/ext-language_tools";
 import { ref, watch } from 'vue'
 export default {

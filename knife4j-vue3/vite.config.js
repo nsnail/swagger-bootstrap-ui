@@ -6,6 +6,7 @@ import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers'
 import viteCompression from 'vite-plugin-compression';
 import removeConsole from 'vite-plugin-remove-console';
 import { resolve } from 'path'
+import { nodePolyfills } from 'vite-plugin-node-polyfills'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -16,6 +17,7 @@ export default defineConfig({
     Components({
       resolvers: [AntDesignVueResolver()]
     }),
+    nodePolyfills(),
     viteCompression({
       deleteOriginFile: false, //删除源文件
       threshold: 10240, //压缩前最小文件大小
@@ -42,15 +44,17 @@ export default defineConfig({
     host: true,
     proxy: {
       '/api': {
-        target: `http://localhost:8990`,
+        target: `http://localhost:63020`,
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, '')
       }
     }
   },
   build: {
+    emptyOutDir: true,
+    outDir: '../../IGeekFan.AspNetCore.Knife4jUI/src/IGeekFan.AspNetCore.Knife4jUI',
     rollupOptions: {
-      input: 'doc.html',
+      input: 'index.html',
       output: {
         chunkFileNames: 'webjars/js/[name]-[hash].js',
         entryFileNames: 'webjars/js/[name]-[hash].js',

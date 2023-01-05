@@ -24,13 +24,7 @@ const langOptions = {
         title: 'description',
         width: '35%',
         dataIndex: 'description',
-        scopedSlots: { customRender: 'descriptionValueTemplate' }
       },
-      {
-        title: 'schema',
-        dataIndex: 'schemaValue',
-        width: '15%'
-      }
     ],
     //文档说明-请求参数
     documentRequestColumns:[
@@ -43,28 +37,19 @@ const langOptions = {
         title: 'description',
         dataIndex: 'description',
         width: '25%',
-        scopedSlots: { customRender: 'descriptionValueTemplate' }
       },
       {
-        title: 'in',
-        dataIndex: 'in',
-        scopedSlots: { customRender: 'typeTemplate' }
+        title: 'example',
+        dataIndex: 'example',
       },
       {
         title: 'require',
         dataIndex: 'require',
-        scopedSlots: { customRender: 'requireTemplate' }
       },
       {
         title: 'type',
         dataIndex: 'type',
-        scopedSlots: { customRender: 'datatypeTemplate' }
       },
-      {
-        title: 'schema',
-        dataIndex: 'schemaValue',
-        width: '15%'
-      }
     ],
     //文档说明-响应状态
     documentResponseStatusColumns:[
@@ -77,12 +62,10 @@ const langOptions = {
         title: 'description',
         dataIndex: 'description',
         width: '55%',
-        scopedSlots: { customRender: 'descriptionTemplate' }
       },
       {
         title: 'schema',
         dataIndex: 'schema',
-        scopedSlots: { customRender: 'schemaTemplate' }
       }
     ],
     //文档说明-响应Header
@@ -112,18 +95,16 @@ const langOptions = {
       {
         title: 'description',
         dataIndex: 'description',
-        scopedSlots: { customRender: 'descriptionTemplate' },
         width: '40%'
+      },
+      {
+        title: 'example',
+        dataIndex: 'example',
       },
       {
         title: 'type',
         dataIndex: 'type'
       },
-      {
-        title: 'schema',
-        dataIndex: 'schemaValue',
-        width: '15%'
-      }
     ],
     //调试-请求头参数
     debugRequestHeaderColumns:[
@@ -131,24 +112,15 @@ const langOptions = {
         title: 'name',
         dataIndex: 'name',
         width: '20%',
-        scopedSlots: {
-          customRender: 'headerName'
-        }
       },
       {
         title: 'value',
         dataIndex: 'content',
-        scopedSlots: {
-          customRender: 'headerValue'
-        }
       },
       {
         title: 'operation',
         dataIndex: 'operation',
         width: '10%',
-        scopedSlots: {
-          customRender: 'operation'
-        }
       }
     ],
     //调试-FormData类型请求头
@@ -157,32 +129,20 @@ const langOptions = {
         title: 'name',
         dataIndex: 'name',
         width: '20%',
-        scopedSlots: {
-          customRender: 'formName'
-        }
       },
       {
         title: 'type',
         dataIndex: 'type',
         width: '12%',
-        scopedSlots: {
-          customRender: 'formType'
-        }
       },
       {
         title: 'value',
         dataIndex: 'content',
-        scopedSlots: {
-          customRender: 'formValue'
-        }
       },
       {
         title: 'operation',
         dataIndex: 'operation',
         width: '10%',
-        scopedSlots: {
-          customRender: 'operation'
-        }
       }
     ],
     //调试-url-form类型请求参数头
@@ -191,24 +151,15 @@ const langOptions = {
         title: 'name',
         dataIndex: 'name',
         width: '20%',
-        scopedSlots: {
-          customRender: 'urlFormName'
-        }
       },
       {
         title: 'value',
         dataIndex: 'content',
-        scopedSlots: {
-          customRender: 'urlFormValue'
-        }
       },
       {
         title: 'operation',
         dataIndex: 'operation',
         width: '10%',
-        scopedSlots: {
-          customRender: 'operation'
-        }
       }
     ],
     //调试-响应Header
@@ -244,9 +195,6 @@ const langOptions = {
       {
         title: 'value',
         dataIndex: 'value',
-        scopedSlots: {
-          customRender: 'paramIpt'
-        }
       }
     ]
   },
@@ -364,33 +312,21 @@ const langOptions = {
         title: 'name',
         dataIndex: 'name',
         width: '15%',
-        scopedSlots: {
-          customRender: 'name'
-        }
       },
       {
         title: 'value',
         className: 'column-money',
         dataIndex: 'value',
         width: '65%',
-        scopedSlots: {
-          customRender: 'paramContentLabel'
-        }
       },
       {
         title: 'type',
         dataIndex: 'in',
         width: '10%',
-        scopedSlots: {
-          customRender: 'paramTypeLable'
-        }
       },
       {
         title: 'operation',
         dataIndex: 'operation',
-        scopedSlots: {
-          customRender: 'operation'
-        }
       }
     ],
     form:{

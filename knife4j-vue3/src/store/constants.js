@@ -9,33 +9,21 @@ const constants = {
     title: '参数名称',
     dataIndex: 'name',
     width: '15%',
-    scopedSlots: {
-      customRender: 'name'
-    }
   },
   {
     title: '参数值',
     className: 'column-money',
     dataIndex: 'value',
     width: '65%',
-    scopedSlots: {
-      customRender: 'paramContentLabel'
-    }
   },
   {
     title: '参数类型',
     dataIndex: 'in',
     width: '10%',
-    scopedSlots: {
-      customRender: 'paramTypeLable'
-    }
   },
   {
     title: '操作',
     dataIndex: 'operation',
-    scopedSlots: {
-      customRender: 'operation'
-    }
   }
   ],
   globalSecurityParameters: 'Knife4jGlobalSecurityParameters',
@@ -50,8 +38,8 @@ const constants = {
   // Ui界面个性化配置默认初始值
   defaultWebSettings: {
     enableDebug: true,// 是否开启Debug调试栏
-    enableFooter: true,// 是否默认显示底部Footer
-    enableFooterCustom: false,// 是否自定义Footer
+    enableFooter: false,// 是否默认显示底部Footer
+    enableFooterCustom: true,// 是否自定义Footer
     footerCustomContent: '',// 自定义footer内容
     enableSearch: true,// 是否显示搜索框
     enableOpenApi: true,// 是否显示OpenApi原始规范结构
@@ -60,13 +48,13 @@ const constants = {
     enableGroup: true,// 是否显示分组下拉框，默认true(即显示)，一般情况下，如果是单个分组的情况下，可以设置该属性为false，即不显示分组，那么也就不用选择了
     enableResponseCode: true, // since 4.0.0 是否显示响应状态码栏
     enableSwaggerModels: true,// 是否显示界面中SwaggerModel功能
-    swaggerModelName: 'Swagger Models',// 重命名界面Swagger Model的显示名称
-    enableReloadCacheParameter: false,//  是否在每个Debug调试栏后显示刷新变量按钮,默认不显示
+    swaggerModelName: '数据模型',// 重命名界面Swagger Model的显示名称
+    enableReloadCacheParameter: true,//  是否在每个Debug调试栏后显示刷新变量按钮,默认不显示
     enableAfterScript: true,// 调试Tab是否显示AfterScript功能,默认开启
     enableDocumentManage: true,// 是否显示界面中'文档管理'功能
-    enableVersion: false,// 是否开启界面中对某接口的版本控制,如果开启，后端变化后Ui界面会存在小蓝点
+    enableVersion: true,// 是否开启界面中对某接口的版本控制,如果开启，后端变化后Ui界面会存在小蓝点
     showApiUrl: false, // 接口api地址不显示
-    showTagStatus: false, // 分组tag显示description属性,针对@Api注解没有tags属性值的情况
+    showTagStatus: true, // 分组tag显示description属性,针对@Api注解没有tags属性值的情况
     enableSwaggerBootstrapUi: false, // 是否开启swaggerBootstrapUi增强
     treeExplain: true,
 
@@ -74,8 +62,8 @@ const constants = {
   },
   defaultSettings: {
     enableDebug: true,// 是否开启Debug调试栏
-    enableFooter: true,// 是否默认显示底部Footer
-    enableFooterCustom: false,// 是否自定义Footer
+    enableFooter: false,// 是否默认显示底部Footer
+    enableFooterCustom: true,// 是否自定义Footer
     footerCustomContent: '',// 自定义footer内容
     enableSearch: true,// 是否显示搜索框
     enableOpenApi: true,// 是否显示OpenApi原始规范结构
@@ -86,16 +74,16 @@ const constants = {
     enableResponseCode: true, // since 4.0.0 是否显示响应状态码栏
 
     enableSwaggerModels: true,// 是否显示界面中SwaggerModel功能
-    swaggerModelName: 'Swagger Models',// 重命名界面Swagger Model的显示名称
-    enableReloadCacheParameter: false,//  是否在每个Debug调试栏后显示刷新变量按钮,默认不显示
+    swaggerModelName: '数据模型',// 重命名界面Swagger Model的显示名称
+    enableReloadCacheParameter: true,//  是否在每个Debug调试栏后显示刷新变量按钮,默认不显示
     enableAfterScript: true,// 调试Tab是否显示AfterScript功能,默认开启
     enableDocumentManage: true,// 是否显示界面中'文档管理'功能
-    enableVersion: false,// 是否开启界面中对某接口的版本控制,如果开启，后端变化后Ui界面会存在小蓝点
+    enableVersion: true,// 是否开启界面中对某接口的版本控制,如果开启，后端变化后Ui界面会存在小蓝点
     showApiUrl: false, // 接口api地址不显示
-    showTagStatus: false, // 分组tag显示description属性,针对@Api注解没有tags属性值的情况
+    showTagStatus: true, // 分组tag显示description属性,针对@Api注解没有tags属性值的情况
     enableSwaggerBootstrapUi: false, // 是否开启swaggerBootstrapUi增强
     treeExplain: true,
-    enableDynamicParameter: false, // 开启动态参数
+    enableDynamicParameter: true, // 开启动态参数
     enableFilterMultipartApis: false, // 针对RequestMapping的接口请求类型,在不指定参数类型的情况下,如果不过滤,默认会显示7个类型的接口地址参数,如果开启此配置,默认展示一个Post类型的接口地址
     enableFilterMultipartApiMethodType: 'POST', // 默认保存类型
     enableRequestCache: true, // 是否开启请求参数缓存
@@ -107,8 +95,8 @@ const constants = {
   // 增强配置
   defaultPlusSettings: {
     enableDebug: true,// 是否开启Debug调试栏
-    enableFooter: true,// 是否默认显示底部Footer
-    enableFooterCustom: false,// 是否自定义Footer
+    enableFooter: false,// 是否默认显示底部Footer
+    enableFooterCustom: true,// 是否自定义Footer
     footerCustomContent: '',// 自定义footer内容
     enableSearch: true,// 是否显示搜索框
     enableOpenApi: true,// 是否显示OpenApi原始规范结构
@@ -117,16 +105,16 @@ const constants = {
     enableGroup: true,// 是否显示分组下拉框，默认true(即显示)，一般情况下，如果是单个分组的情况下，可以设置该属性为false，即不显示分组，那么也就不用选择了
 
     enableSwaggerModels: true,// 是否显示界面中SwaggerModel功能
-    swaggerModelName: 'Swagger Models',// 重命名界面Swagger Model的显示名称
-    enableReloadCacheParameter: false,//  是否在每个Debug调试栏后显示刷新变量按钮,默认不显示
+    swaggerModelName: '数据模型',// 重命名界面Swagger Model的显示名称
+    enableReloadCacheParameter: true,//  是否在每个Debug调试栏后显示刷新变量按钮,默认不显示
     enableAfterScript: true,// 调试Tab是否显示AfterScript功能,默认开启
     enableDocumentManage: true,// 是否显示界面中'文档管理'功能
-    enableVersion: false,// 是否开启界面中对某接口的版本控制,如果开启，后端变化后Ui界面会存在小蓝点
+    enableVersion: true,// 是否开启界面中对某接口的版本控制,如果开启，后端变化后Ui界面会存在小蓝点
     showApiUrl: false, // 接口api地址不显示
-    showTagStatus: false, // 分组tag显示description属性,针对@Api注解没有tags属性值的情况
+    showTagStatus: true, // 分组tag显示description属性,针对@Api注解没有tags属性值的情况
     enableSwaggerBootstrapUi: true, // 是否开启swaggerBootstrapUi增强
     treeExplain: true,
-    enableDynamicParameter: false, // 开启动态参数
+    enableDynamicParameter: true, // 开启动态参数
     enableFilterMultipartApis: false, // 针对RequestMapping的接口请求类型,在不指定参数类型的情况下,如果不过滤,默认会显示7个类型的接口地址参数,如果开启此配置,默认展示一个Post类型的接口地址
     enableFilterMultipartApiMethodType: 'POST', // 默认保存类型
     enableRequestCache: true, // 是否开启请求参数缓存
@@ -301,80 +289,50 @@ const constants = {
     title: '请求头',
     dataIndex: 'name',
     width: '20%',
-    scopedSlots: {
-      customRender: 'headerName'
-    }
   },
   {
     title: '内容',
     dataIndex: 'content',
-    scopedSlots: {
-      customRender: 'headerValue'
-    }
   },
   {
     title: '操作',
     dataIndex: 'operation',
     width: '10%',
-    scopedSlots: {
-      customRender: 'operation'
-    }
   }
   ],
   debugFormRequestHeader: [{
     title: '参数名称',
     dataIndex: 'name',
     width: '20%',
-    scopedSlots: {
-      customRender: 'formName'
-    }
   },
   {
     title: '类型',
     dataIndex: 'type',
     width: '12%',
-    scopedSlots: {
-      customRender: 'formType'
-    }
   },
   {
     title: '参数值',
     dataIndex: 'content',
-    scopedSlots: {
-      customRender: 'formValue'
-    }
   },
   {
     title: '操作',
     dataIndex: 'operation',
     width: '10%',
-    scopedSlots: {
-      customRender: 'operation'
-    }
   }
   ],
   debugUrlFormRequestHeader: [{
     title: '参数名称',
     dataIndex: 'name',
     width: '20%',
-    scopedSlots: {
-      customRender: 'urlFormName'
-    }
   },
   {
     title: '参数值',
     dataIndex: 'content',
-    scopedSlots: {
-      customRender: 'urlFormValue'
-    }
   },
   {
     title: '操作',
     dataIndex: 'operation',
     width: '10%',
-    scopedSlots: {
-      customRender: 'operation'
-    }
   }
   ],
   debugCacheApiId: 'Knife4jCacheApi'

@@ -758,7 +758,7 @@ export default {
             };
             if (security.in == 'header') {
               // console.log("addHeader.", security)
-              // this.headerData.push(newHeader);
+              this.headerData.push(newHeader);
               // 判断该接口是否security-Authorize
               if (this.api.securityFlag) {
                 if (this.api.securityKeys.includes(security.key)) {

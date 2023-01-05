@@ -139,8 +139,8 @@ function SwaggerBootstrapUi(options) {
   //  个性化配置
   this.settings = options.settings || {
     enableDebug: true,// 是否开启Debug调试栏
-    enableFooter: true,// 是否默认显示底部Footer
-    enableFooterCustom: false,// 是否自定义Footer
+    enableFooter: false,// 是否默认显示底部Footer
+    enableFooterCustom: true,// 是否自定义Footer
     footerCustomContent: '',// 自定义footer内容
     enableSearch: true,// 是否显示搜索框
     enableOpenApi: true,// 是否显示OpenApi原始规范结构
@@ -151,16 +151,16 @@ function SwaggerBootstrapUi(options) {
     enableResponseCode: true, // since 4.0.0 是否显示响应状态码栏
 
     enableSwaggerModels: true,// 是否显示界面中SwaggerModel功能
-    swaggerModelName: 'Swagger Models',// 重命名界面Swagger Model的显示名称
-    enableReloadCacheParameter: false,//  是否在每个Debug调试栏后显示刷新变量按钮,默认不显示
+    swaggerModelName: '数据模型',// 重命名界面Swagger Model的显示名称
+    enableReloadCacheParameter: true,//  是否在每个Debug调试栏后显示刷新变量按钮,默认不显示
     enableAfterScript: true,// 调试Tab是否显示AfterScript功能,默认开启
     enableDocumentManage: true,// 是否显示界面中'文档管理'功能
-    enableVersion: false,// 是否开启界面中对某接口的版本控制,如果开启，后端变化后Ui界面会存在小蓝点
+    enableVersion: true,// 是否开启界面中对某接口的版本控制,如果开启，后端变化后Ui界面会存在小蓝点
     showApiUrl: false, // 接口api地址不显示
-    showTagStatus: false, // 分组tag显示description属性,针对@Api注解没有tags属性值的情况
+    showTagStatus: true, // 分组tag显示description属性,针对@Api注解没有tags属性值的情况
     enableSwaggerBootstrapUi: false, // 是否开启swaggerBootstrapUi增强
     treeExplain: true,
-    enableDynamicParameter: false, // 开启动态参数
+    enableDynamicParameter: true, // 开启动态参数
     enableFilterMultipartApis: false, // 针对RequestMapping的接口请求类型,在不指定参数类型的情况下,如果不过滤,默认会显示7个类型的接口地址参数,如果开启此配置,默认展示一个Post类型的接口地址
     enableFilterMultipartApiMethodType: 'POST', // 默认保存类型
     enableRequestCache: true, // 是否开启请求参数缓存
@@ -1427,9 +1427,8 @@ SwaggerBootstrapUi.prototype.analysisDefinitionAsyncOAS2 = function (menu, swud,
               if (propobj.hasOwnProperty('enum')) {
                 spropObj.enum = propobj['enum'];
                 if (spropObj.description != '') {
-                  spropObj.description += ',';
                 }
-                spropObj.description = spropObj.description + '可用值:' + spropObj.enum.join(',');
+                spropObj.description = spropObj.description;
               }
               if (spropObj.type == 'string') {
                 // spropObj.example = String(KUtils.propValue('example', propobj, ''));
@@ -1560,9 +1559,8 @@ SwaggerBootstrapUi.prototype.analysisDefinitionAsyncOAS2 = function (menu, swud,
                     // 判断是否存在枚举
                     if (items.hasOwnProperty('enum')) {
                       if (spropObj.description != '') {
-                        spropObj.description += ',';
                       }
-                      spropObj.description = spropObj.description + '可用值:' + items['enum'].join(',');
+                      spropObj.description = spropObj.description;
                     }
                     var regex = new RegExp(KUtils.oasmodel(oas2), 'ig');
                     if (regex.test(ref)) {
@@ -1707,9 +1705,8 @@ SwaggerBootstrapUi.prototype.analysisDefinitionAsyncOAS3 = function (menu, swud,
               if (propobj.hasOwnProperty('enum')) {
                 spropObj.enum = propobj['enum'];
                 if (spropObj.description != '') {
-                  spropObj.description += ',';
                 }
-                spropObj.description = spropObj.description + '可用值:' + spropObj.enum.join(',');
+                spropObj.description = spropObj.description;
               }
               if (spropObj.type == 'string') {
                 // spropObj.example = String(KUtils.propValue('example', propobj, ''));
@@ -1843,9 +1840,8 @@ SwaggerBootstrapUi.prototype.analysisDefinitionAsyncOAS3 = function (menu, swud,
                     // 判断是否存在枚举
                     if (items.hasOwnProperty('enum')) {
                       if (spropObj.description != '') {
-                        spropObj.description += ',';
                       }
-                      spropObj.description = spropObj.description + '可用值:' + items['enum'].join(',');
+                      spropObj.description = spropObj.description;
                     }
                     var regex = new RegExp(KUtils.oasmodel(oas2), 'ig');
                     if (regex.test(ref)) {
@@ -2089,9 +2085,7 @@ SwaggerBootstrapUi.prototype.analysisDefinitionRefTableModel = function (instanc
                       // 判断是否包含枚举
                       if (p.hasOwnProperty('enum')) {
                         if (description != '') {
-                          description += ',';
                         }
-                        description = description + '可用值:' + p.enum.join(',');
                       }
                       refp.description = KUtils.replaceMultipLineStr(description);
                       that.validateJSR303(refp, p);
@@ -2172,8 +2166,7 @@ SwaggerBootstrapUi.prototype.analysisDefinitionRefTableModel = function (instanc
                     refp.name = pkey;
                     refp.type = def.type;
                     refp.example = def.example;
-                    description = '可用值:' + def['enum'].join(',');
-                    refp.description = KUtils.replaceMultipLineStr(description);
+                    refp.description = KUtils.replaceMultipLineStr(def.description);
                     // models添加所有属性
                     originalTreeTableModel.params.push(refp);
 
@@ -2359,9 +2352,8 @@ function deepSwaggerModelsTreeTableRefParameter(parentRefp, definitions, deepDef
               // 判断是否包含枚举
               if (p.hasOwnProperty('enum')) {
                 if (description != '') {
-                  description += ',';
                 }
-                description = description + '可用值:' + p.enum.join(',');
+                description = description;
               }
               refp.description = KUtils.replaceMultipLineStr(description);
               // KUtils.validateJSR303(refp, p);
@@ -3185,7 +3177,7 @@ SwaggerBootstrapUi.prototype.createDetailMenu = function (addFlag) {
   // 是否显示SwaggerModels
   if (that.settings.enableSwaggerModels) {
     // 重命名model
-    var swaggerModelName = KUtils.getValue(that.settings, 'swaggerModelName', 'Swagger Models', true);
+    var swaggerModelName = KUtils.getValue(that.settings, 'swaggerModelName', '数据模型', true);
     menuArr.push({
       groupName: groupName,
       groupId: groupId,
@@ -3315,7 +3307,7 @@ SwaggerBootstrapUi.prototype.createDetailMenu = function (addFlag) {
     var _lititle = '';
     if (len == 0) {
       if (that.settings.showTagStatus) {
-        _lititle = tag.name + '(' + tag.description + ')';
+        _lititle = tag.description;
       } else {
         _lititle = tag.name;
       }
@@ -3334,7 +3326,7 @@ SwaggerBootstrapUi.prototype.createDetailMenu = function (addFlag) {
       });
     } else {
       if (that.settings.showTagStatus) {
-        _lititle = tag.name + '(' + tag.description + ')';
+        _lititle = tag.description;
       } else {
         _lititle = tag.name;
       }
@@ -5232,7 +5224,7 @@ SwaggerBootstrapUi.prototype.assembleParameter = function (m, swpinfo) {
     // 枚举类型,描述显示可用值
     var avaiableArrStr = m.enum.join(',');
     if (m.description != null && m.description != undefined && m.description != '') {
-      minfo.description = m.description + ',可用值:' + avaiableArrStr;
+      minfo.description = m.description;
     } else {
       minfo.description = '枚举类型,可用值:' + avaiableArrStr;
     }
@@ -5528,7 +5520,7 @@ SwaggerBootstrapUi.prototype.assembleParameterOAS3 = function (m, swpinfo, requi
     // 枚举类型,描述显示可用值
     var avaiableArrStr = m.enum.join(',');
     if (m.description != null && m.description != undefined && m.description != '') {
-      minfo.description = m.description + ',可用值:' + avaiableArrStr;
+      minfo.description = m.description;
     } else {
       minfo.description = '枚举类型,可用值:' + avaiableArrStr;
     }
@@ -5608,7 +5600,7 @@ SwaggerBootstrapUi.prototype.assembleParameterOAS3 = function (m, swpinfo, requi
           // 枚举类型,描述显示可用值
           var avaiableArrStr = _enumArray.join(',');
           if (m.description != null && m.description != undefined && m.description != '') {
-            minfo.description = m.description + ',可用值:' + avaiableArrStr;
+            minfo.description = m.description;
           } else {
             minfo.description = '枚举类型,可用值:' + avaiableArrStr;
           }
@@ -5635,7 +5627,7 @@ SwaggerBootstrapUi.prototype.assembleParameterOAS3 = function (m, swpinfo, requi
         // 枚举类型,描述显示可用值
         var avaiableArrStr = _enumArray.join(',');
         if (m.description != null && m.description != undefined && m.description != '') {
-          minfo.description = m.description + ',可用值:' + avaiableArrStr;
+          minfo.description = m.description;
         } else {
           minfo.description = '枚举类型,可用值:' + avaiableArrStr;
         }

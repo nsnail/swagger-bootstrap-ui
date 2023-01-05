@@ -1,11 +1,6 @@
 <template>
   <a-layout-content class="knife4j-body-content">
     <a-row class="settingConfig">
-      <a-row class="gptips" v-html="$t('message.settingTip')">
-
-      </a-row>
-    </a-row>
-    <a-row class="settingConfig">
       <a-row class="content-line">
         <a-col :span="24">
           <a-checkbox @change="checkboxChange('enableRequestCache')" :checked="settings.enableRequestCache"><span
@@ -17,23 +12,6 @@
         <a-col :span="24">
           <a-checkbox @change="checkboxChange('enableDynamicParameter')" :checked="settings.enableDynamicParameter">
             <span v-html="$t('settings.dynamicParameter')"></span></a-checkbox>
-        </a-col>
-      </a-row>
-      <a-divider class="divider" />
-      <a-row class="content-line">
-        <a-col :span="24">
-          <a-checkbox @change="checkboxChange('enableFilterMultipartApis')"
-                      :checked="settings.enableFilterMultipartApis"><span v-html="$t('settings.apiFilter')"></span></a-checkbox>
-          <a-select style="width:140px;" @change="filterOptionsChange"
-                    :value="settings.enableFilterMultipartApiMethodType">
-            <a-select-option value="GET">GET</a-select-option>
-            <a-select-option value="POST">POST</a-select-option>
-            <a-select-option value="PUT">PUT</a-select-option>
-            <a-select-option value="DELETE">DELETE</a-select-option>
-            <a-select-option value="PATCH">PATCH</a-select-option>
-            <a-select-option value="OPTIONS">OPTIONS</a-select-option>
-            <a-select-option value="HEAD">HEAD</a-select-option>
-          </a-select>
         </a-col>
       </a-row>
       <a-divider class="divider" />

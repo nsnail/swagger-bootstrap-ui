@@ -112,7 +112,7 @@ export function getDocumentVueTemplatesUS(title, resumecss, dataStr) {
                         {{param.method}}
                       </a-col>
                       <a-col :span="2">
-                        <a-tag color="#108ee9">{{param.count}}</a-tag>
+                        <a-tag color="#00ab6d">{{param.count}}</a-tag>
                       </a-col>
                       <a-divider class="divider-count" />
                     </a-row>
@@ -209,16 +209,16 @@ export function getDocumentVueTemplatesUS(title, resumecss, dataStr) {
                 :row-key="genUnionTableKey"
                 size="small"
                 :pagination="page" >
-                  <template slot="requireTemplate" slot-scope="text">
+                  <template #requireTemplate="{text}">
                     <span v-if="text" style="color:red">{{ text.toLocaleString() }}</span>
                     <span v-else>{{ text.toLocaleString() }}</span>
                   </template>
 
-                  <template slot="typeTemplate" slot-scope="text">
+                  <template #typeTemplate="{text}">
                     <span :class="'knife4j-request-' + text">{{ text }}</span>
                   </template>
 
-                  <template slot="datatypeTemplate" slot-scope="text, record">
+                  <template #datatypeTemplate="{text, record}">
                     <data-type :text="text" :record="record"></data-type>
                   </template>
               </a-table>
@@ -233,7 +233,7 @@ export function getDocumentVueTemplatesUS(title, resumecss, dataStr) {
                 size="small"
                 :pagination="page"
               >
-                <template slot="descriptionTemplate" slot-scope="text">
+                <template #descriptionTemplate="{text}">
                   <div v-html="text"></div>
                 </template>
               </a-table>
@@ -360,17 +360,14 @@ export function getDocumentVueTemplatesUS(title, resumecss, dataStr) {
           {
             title: "in",
             dataIndex: "in",
-            scopedSlots: { customRender: "typeTemplate" }
           },
           {
             title: "require",
             dataIndex: "require",
-            scopedSlots: { customRender: "requireTemplate" }
           },
           {
             title: "type",
             dataIndex: "type",
-            scopedSlots: { customRender: "datatypeTemplate" }
           },
           {
             title: "schema",
@@ -389,7 +386,6 @@ export function getDocumentVueTemplatesUS(title, resumecss, dataStr) {
             title: "description",
             dataIndex: "description",
             width: "55%",
-            scopedSlots: { customRender: "descriptionTemplate" }
           },
           {
             title: "schema",
@@ -478,7 +474,7 @@ export function getDocumentVueTemplatesUS(title, resumecss, dataStr) {
               return size;
             }
           },
-          template:'<div><span v-if="!record.validateStatus">{{text}}</span><span v-else class="knife4j-request-validate-jsr"><a-tooltip placement="right"><template slot="title"><div v-for="pt in validators" :key="pt.key">{{pt.val}}</div></template>{{text}}</a-tooltip></span></div>'
+          template:'<div><span v-if="!record.validateStatus">{{text}}</span><span v-else class="knife4j-request-validate-jsr"><a-tooltip placement="right"><template #title><div v-for="pt in validators" :key="pt.key">{{pt.val}}</div></template>{{text}}</a-tooltip></span></div>'
 
         }
         var data={
